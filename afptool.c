@@ -569,7 +569,8 @@ int pack_update(const char* srcdir, const char* dstfile) {
 		if (strcmp(package_image.packages[i].filename, "SELF") == 0)
 			continue;
 
-		printf("Add file: %s\n", header.parts[i].filename);
+		printf("Add file: %s [0x%08x@0x%08x]\n", header.parts[i].filename,
+			header.parts[i].nand_size, header.parts[i].nand_addr);
 		if (import_package(fp, &header.parts[i], header.parts[i].filename))
 			return -1;
 	}
